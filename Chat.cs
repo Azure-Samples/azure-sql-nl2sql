@@ -103,7 +103,7 @@ public class ChatBot
             Use a professional tone when aswering and provide a summary of data instead of lists. 
             If users ask about topics you don't know, answer that you don't know. Today's date is {DateTime.Now:yyyy-MM-dd}. 
             You must answer providing a list of tables that must be used to answer the question and an explanation of that you'll be doing to answer the question.
-            You must use the provided plugin to query the database.
+            You must use the provided tool to query the database.
             If the request is complex, break it down into smaller steps and call the plugin as many time as needed. Ideally don't use most than 5 tables in the same query.            
         """);
         var builder = new StringBuilder();
