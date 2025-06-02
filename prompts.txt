@@ -1,0 +1,7 @@
+Sample Prompt 1:
+
+Hi, can you help me figure out what is our best selling product in each market we operate, and what would be a cross selling opportunity with another product? 
+
+Sample Prompt 2:
+
+I want to analyze what kind of product package we could put together to increase the sales.

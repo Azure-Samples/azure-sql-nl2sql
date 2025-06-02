@@ -407,5 +407,4 @@ FodyWeavers.xsd
 
 # Custom
 *.env
-prompts.txt
 *.local.sql
