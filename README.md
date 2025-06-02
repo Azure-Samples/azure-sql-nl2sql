@@ -1,6 +1,6 @@
 # Azure SQL Natural Language to SQL Queries
 
-This repository is the accompanying code for the "A story of collaborating agents: chatting with your database the right way" article. Make sure that check that out.
+This repository is the accompanying code for the "[A story of collaborating agents: chatting with your database the right way](https://devblogs.microsoft.com/azure-sql/a-story-of-collaborating-agents-chatting-with-your-database-the-right-way/)" article. Make sure that check that out.
 
 ![AI Agents collaborating to answer complex NL2SQL question](./_assets/chatbot-azure-sql.gif)
 
