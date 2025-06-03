@@ -43,7 +43,7 @@ Server=tcp:127.0.0.1,1433;Initial Catalog=AdventureWorks2022;Persist Security In
 
 ## Create .env file
 
-Create the `.env` file fromt the provided `.env.sample` file. For the sample to run you need to specify the Azure OpenAI endpoint and model and credentials, if you are not using EntraID:
+Create the `.env` file fromt the provided `.env.sample` file. For the sample to run you need to specify the Azure OpenAI endpoint and model deployment name. You also need to specify API KEY, if you are not using EntraID. If you are using [Entra ID to access Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/role-based-access-control#cognitive-services-openai-user), simple remove the `OPENAI_KEY` line from the file: the `DefaultAzureCredential` [class](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) will be used to provide your EntraID credentials to Azure OpenAI service.
 
 ```bash
 OPENAI_URL="https://.openai.azure.com/"
