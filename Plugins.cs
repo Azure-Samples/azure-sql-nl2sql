@@ -22,7 +22,7 @@ public class DatabaseQueryPlugin(Kernel kernel, ILogger logger, Database databas
     private readonly Kernel kernel = kernel;
     private readonly Database database = database;
 
-    [KernelFunction("query_database")]
+    [KernelFunction("QueryDatabase")]
     [Description("""
         Run a query against the database using the provided list of tables. 
         The tables must be provided in the format: "table1, table2, table3".

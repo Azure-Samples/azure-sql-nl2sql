@@ -63,8 +63,6 @@ public class Database(string connectionString)
         {
             schema.AppendLine($"{column.column_name} ({column.column_type}) -- {column.column_description}");
         }
-        // Console.WriteLine($"Schema for table '{tableName}':");
-        // Console.WriteLine(schema.ToString());
 
         return schema.ToString();
     }

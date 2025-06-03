@@ -124,7 +124,6 @@ public class ChatBot
                     chat.RemoveRange(1, chat.Count - 1);
                     AnsiConsole.WriteLine("Chat history cleared.");
                     continue;
-
                 case "/h":
                     foreach (var message in chat)
                     {
@@ -156,7 +155,6 @@ public class ChatBot
                 builder.Append(message.Content);
             }
             AnsiConsole.WriteLine();
-
 
             chat.AddAssistantMessage(builder.ToString());
         }
