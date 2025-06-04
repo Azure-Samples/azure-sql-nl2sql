@@ -26,7 +26,13 @@ public class Database(string connectionString)
     {
         return connectionString;
     }
-    
+
+    public void Initialize()
+    {
+        using var connection = new SqlConnection(connectionString);
+        connection.Open();
+        connection.Execute("SELECT 1");
+    }
     public async Task<string> GetTableColumnsAsync(string tableName)
     {
         await using var connection = new SqlConnection(connectionString);

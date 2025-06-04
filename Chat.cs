@@ -89,6 +89,9 @@ public class ChatBot
             }
             var ai = kernel.GetRequiredService<IChatCompletionService>();
 
+            AnsiConsole.WriteLine("Initializing database...");
+            database.Initialize();
+
             AnsiConsole.WriteLine("Done!");
 
             return (logger, kernel, ai);
