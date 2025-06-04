@@ -87,7 +87,15 @@ public class Database(string connectionString)
             where
                 s.type_desc = 'USER_TABLE'
             and
+                ep.class_desc = 'OBJECT_OR_COLUMN'
+            and
+                ep.[name] = 'MS_Description'
+            and
                 ep.minor_id = 0
+            and
+                schema_id <> schema_id('dbo')
+            order by
+                table_name
         """
         );
 
