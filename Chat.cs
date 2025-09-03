@@ -14,6 +14,7 @@ using Microsoft.SemanticKernel.Services;
 using Azure.Identity;
 using Microsoft.SemanticKernel.Embeddings;
 using Microsoft.Extensions.AI;
+using Microsoft.Data.SqlClient;
 
 #pragma warning disable SKEXP0001, SKEXP0010, SKEXP0020
 
@@ -42,7 +43,7 @@ public class ChatBot
 
         var table = new Table();
         table.Expand();
-        table.AddColumn(new TableColumn("[bold]Natural Language Database Chatbot Agent[/] v1.0").Centered());
+        table.AddColumn(new TableColumn("[bold]Natural Language Database Chatbot Agent[/] v1.1").Centered());
         AnsiConsole.Write(table);
 
         var database = new Database(sqlConnectionString);
@@ -71,7 +72,12 @@ public class ChatBot
             }
 
             sc.AddKernel();
-            sc.AddLogging(b => b.AddSimpleConsole(o => { o.ColorBehavior = LoggerColorBehavior.Enabled; }).SetMinimumLevel(enableDebug ? LogLevel.Debug : LogLevel.None));
+            sc.AddLogging(b => 
+            {
+                b.ClearProviders(); // Clear default providers
+                b.SetMinimumLevel(enableDebug ? LogLevel.Debug : LogLevel.None);
+                b.AddProvider(new SpectreConsoleLoggerProvider());
+            });
 
             var services = sc.BuildServiceProvider();
             var logger = services.GetRequiredService<ILogger<Program>>();
@@ -90,6 +96,8 @@ public class ChatBot
             var ai = kernel.GetRequiredService<IChatCompletionService>();
 
             AnsiConsole.WriteLine("Initializing database...");
+            var b = new SqlConnectionStringBuilder(sqlConnectionString);
+            AnsiConsole.WriteLine($"Server: {b.DataSource}, Database: {b.InitialCatalog}");
             database.Initialize();
 
             AnsiConsole.WriteLine("Done!");
