@@ -19,7 +19,8 @@ Once you have Docker and sqlcmd installed, running a SQL Server instance with th
 sqlcmd create mssql --accept-eula --tag 2025-latest --using https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2022.bak
 ```
 
-The command will 
+The command will:
+
 - download the SQL Server image and 
 - run it in a container
 - secure the installation by creating an admin user with a strong password
