@@ -53,8 +53,9 @@ public class ChatBot
             FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
         };
 
-        (var logger, var kernel, var ai) = AnsiConsole.Status().Start("Booting up agent...", ctx =>
+        (var logger, var kernel, var ai) = AnsiConsole.Status().Start("Booting up agents...", ctx =>
         {
+            AnsiConsole.WriteLine("Initializing orchestrator agent...");
             ctx.Spinner(Spinner.Known.Default);
             ctx.SpinnerStyle(Style.Parse("yellow"));
 
@@ -80,17 +81,20 @@ public class ChatBot
             });
 
             var services = sc.BuildServiceProvider();
-            var logger = services.GetRequiredService<ILogger<Program>>();
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
 
-            AnsiConsole.WriteLine("Initializing plugins...");
+            var orchestratorAgentLogger = loggerFactory.CreateLogger("OrchestratorAgent");
+            var specializedAgentLogger = loggerFactory.CreateLogger("SpecializedAgent");
+
+            AnsiConsole.WriteLine("Initializing specialized agents...");
             var kernel = services.GetRequiredService<Kernel>();            
-            kernel.Plugins.AddFromObject(new DatabaseQueryPlugin(kernel, logger, database));
+            kernel.Plugins.AddFromObject(new DatabaseExpertAgent(kernel, specializedAgentLogger, database));
 
             foreach (var p in kernel.Plugins)
             {
                 foreach (var f in p.GetFunctionsMetadata())
                 {
-                    AnsiConsole.WriteLine($"Plugin: {p.Name}, Function: {f.Name}");
+                    AnsiConsole.WriteLine($"Agent: {p.Name}, Tool: {f.Name}");
                 }
             }
             var ai = kernel.GetRequiredService<IChatCompletionService>();
@@ -102,7 +106,7 @@ public class ChatBot
 
             AnsiConsole.WriteLine("Done!");
 
-            return (logger, kernel, ai);
+            return (orchestratorAgentLogger, kernel, ai);
         });
 
         AnsiConsole.WriteLine("Ready to chat! Hit 'ctrl-c' to quit.");

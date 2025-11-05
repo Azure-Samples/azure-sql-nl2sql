@@ -21,12 +21,12 @@ sqlcmd create mssql --accept-eula --tag 2025-latest --using https://github.com/M
 
 The command will:
 
-- download the SQL Server image and 
+- download the SQL Server image
 - run it in a container
 - secure the installation by creating an admin user with a strong password
 - restore the sample AdventureWorks2022 database
 
-The image is free to use and it is using the Developer Edition of SQL Server. 
+The image is free to use and it is using the Developer Edition of SQL Server.
 
 ## Get the connection string
 

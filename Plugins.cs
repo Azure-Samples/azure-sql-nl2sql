@@ -16,7 +16,7 @@ using System.Runtime.CompilerServices;
 
 namespace Samples.Azure.Database.NL2SQL;
 
-public class DatabaseQueryPlugin(Kernel kernel, ILogger logger, Database database)
+public class DatabaseExpertAgent(Kernel kernel, ILogger logger, Database database)
 {
     private readonly ILogger logger = logger;
     private readonly Kernel kernel = kernel;
