@@ -5,3 +5,7 @@ Hi, can you help me figure out what is our best selling product in each market w
 Sample Prompt 2:
 
 I want to analyze what kind of product package we could put together to increase the sales.
+
+RLS Prompt:
+
+hi, I need to analyze the sales in France territory. please give me the sales amount by sales person over the years

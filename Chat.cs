@@ -43,7 +43,7 @@ public class ChatBot
 
         var table = new Table();
         table.Expand();
-        table.AddColumn(new TableColumn("[bold]Natural Language Database Chatbot Agent[/] v1.1").Centered());
+        table.AddColumn(new TableColumn("[bold]Natural Language Database Chatbot Agent[/] v1.2").Centered());
         AnsiConsole.Write(table);
 
         var database = new Database(sqlConnectionString);
