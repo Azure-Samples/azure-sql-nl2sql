@@ -5,12 +5,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
-using Microsoft.SemanticKernel.Memory;
-using DotNetEnv;
 using System.Text;
-using Microsoft.Identity.Client;
-using System.Runtime.CompilerServices;
 
 #pragma warning disable SKEXP0001
 

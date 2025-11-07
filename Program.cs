@@ -1,5 +1,4 @@
 ﻿using System.CommandLine;
-using Azure.Identity;
 using Samples.Azure.Database.NL2SQL;
 
 var rootCommand = new RootCommand();
@@ -10,7 +9,6 @@ var envFileOption = new Option<string>("--env-file")
 };
 envFileOption.Aliases.Add("-e");
 envFileOption.Description = "The .env file to load environment variables from.";
-
 
 var debugOption = new Option<Boolean>("--debug")
 {
