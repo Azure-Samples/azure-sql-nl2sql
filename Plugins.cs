@@ -20,7 +20,7 @@ public class DatabaseExpertAgent(Kernel kernel, ILogger logger, Database databas
     [KernelFunction("QueryDatabase")]
     [Description("""
         Run a query against the database using the provided list of tables. 
-        The tables must be provided in the format: "table1, table2, table3".
+        The tables must be provided in the format: "schema.table1, schema.table2, schema.table3".
         The database being used is Microsoft SQL Server so you must use T-SQL syntax.
         """)]
     public async Task<IEnumerable<dynamic>> QueryDatabase(string list_of_tables, string explanation_of_what_to_return)
@@ -70,9 +70,11 @@ public class DatabaseExpertAgent(Kernel kernel, ILogger logger, Database databas
 
         The schema for the avaiable tables is the following:
         
-        {table_schemas.ToString()}
+        {table_schemas}
         
         Generate the T-SQL query based on the provided schema and the user request. The user request is in the next message.
+        Make sure to only use the tables provided in the schema above.
+        Make sure to always specify the schema name when referencing a table, e.g., [SchemaName].[TableName].
         """);
 
         chat.AddUserMessage(explanation_of_what_to_return);
