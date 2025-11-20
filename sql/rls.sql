@@ -19,6 +19,9 @@ go
 
 select suser_sname()
 select * from [Security].[SalesTerritoryAccess]
+select a.UserAccount, a.TerritoryID, t.Name, t.CountryRegionCode 
+from [Security].[SalesTerritoryAccess] as a
+inner join [Sales].[SalesTerritory] as t on a.TerritoryID = t.TerritoryID
 go
 
 create function [Security].[CheckSalesTerritoryAccess](@TerritoryID as int)
@@ -47,4 +50,7 @@ go
 
 alter security policy [Security].[SalesTerritoryPolicy]
 with (state = off)
+go
+
+select * from sys.security_policies
 go
